@@ -110,7 +110,7 @@
   .sec-head .aside{color:var(--ink-2);font-size:13.5px;max-width:36ch;text-align:right}
   .alt{background:var(--paper-2)}
 
-  /* BOXED GRID (Why / Numbers / Benefits) */
+  /* BOXED GRID */
   .box-grid{display:grid;gap:14px}
   .box-grid.cols-3{grid-template-columns:repeat(3,1fr)}
   .box-grid.cols-4{grid-template-columns:repeat(4,1fr)}
@@ -455,16 +455,14 @@
 
 <script>
 /* ============================================================
-   BACKEND HOOK — paste your Apps Script /exec URL here
+   BACKEND — FIX 1: Clean URL (no markdown link syntax)
+   FIX 2: redirect:'follow' for Apps Script 302 handling
    ============================================================ */
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycby9dx5wuL-zPMrtGA-FX8Sx0eY7StyIfBhVQQOxjP9W8cta6RlKxwdPe0HU7QXsiGVsUA/exec](https://script.google.com/macros/s/AKfycby9dx5wuL-zPMrtGA-FX8Sx0eY7StyIfBhVQQOxjP9W8cta6RlKxwdPe0HU7QXsiGVsUA/exec';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycby9dx5wuL-zPMrtGA-FX8Sx0eY7StyIfBhVQQOxjP9W8cta6RlKxwdPe0HU7QXsiGVsUA/exec';
 
 /* ============================================================
    DATA
    ============================================================ */
-
-/* Client logos — drop matching files into /logos folder at repo root.
-   Missing files fall back to company name automatically. */
 const CLIENTS = [
   {name:"EY",              file:"logos/ey.svg"},
   {name:"United Airlines", file:"logos/united.svg"},
@@ -481,9 +479,9 @@ const WHY = [
   {k:"01", t:"Real ownership",
    d:"Small teams. Direct line to leadership. Decisions you actually shape, from day one."},
   {k:"02", t:"Steep learning",
-   d:"Work across strategy, delivery and craft — not a narrow lane. Two years here move like five elsewhere."},
+   d:"Work across strategy, delivery and craft \u2014 not a narrow lane. Two years here move like five elsewhere."},
   {k:"03", t:"People-first culture",
-   d:"We practise the thing we consult on. Shared prosperity, transparency, meritocracy, and strong teamwork — in that order."},
+   d:"We practise the thing we consult on. Shared prosperity, transparency, meritocracy, and strong teamwork \u2014 in that order."},
 ];
 
 const NUMBERS = [
@@ -498,24 +496,24 @@ const NUMBERS = [
 ];
 
 const BENEFITS = [
-  {k:"01", t:"5-Day Work Week",          d:"Weekends off — we work Monday through Friday."},
+  {k:"01", t:"5-Day Work Week",          d:"Weekends off \u2014 we work Monday through Friday."},
   {k:"02", t:"Flexible Timings",         d:"Clock in between 8:00 and 10:29 AM. Standard 9-hour workday."},
   {k:"03", t:"Menstrual Wellness Leave", d:"1 dedicated menstrual wellness leave per month for women employees."},
   {k:"04", t:"Work From Home",           d:"Up to 12 Work From Home days annually, for flexibility when you need it."},
-  {k:"05", t:"Health Insurance",         d:"Comprehensive medical coverage of up to ₹5 lakhs."},
-  {k:"06", t:"Personal Accident Cover",  d:"Personal accident insurance of up to ₹10 lakhs."},
+  {k:"05", t:"Health Insurance",         d:"Comprehensive medical coverage of up to \u20B95 lakhs."},
+  {k:"06", t:"Personal Accident Cover",  d:"Personal accident insurance of up to \u20B910 lakhs."},
   {k:"07", t:"Uncapped Incentives",      d:"No-cap incentive structure with monthly payouts."},
-  {k:"08", t:"Rewards &amp; Recognition",    d:"Up to ₹1 lakh in additional rewards, plus Team of the Month celebrations."},
-  {k:"09", t:"Learning Budget",          d:"50% reimbursement on approved training programs, up to ₹25,000."},
+  {k:"08", t:"Rewards &amp; Recognition",d:"Up to \u20B91 lakh in additional rewards, plus Team of the Month celebrations."},
+  {k:"09", t:"Learning Budget",          d:"50% reimbursement on approved training programs, up to \u20B925,000."},
   {k:"10", t:"Team Connects",            d:"Annual outings, quarterly team lunches, Fun Fridays and festive celebrations."},
 ];
 
 const LEVELS = ["0-2 years","0-3 years","0-4 years","2-5 years","5-10 years","10-15 years","15+ years"];
 
 const ROLES = [
-  {id:"ta-client", fn:"client-delivery", title:"Talent Acquisition Specialist", exp:"0-4 years (open to more)", location:"Bengaluru · Hybrid",
+  {id:"ta-client", fn:"client-delivery", title:"Talent Acquisition Specialist", exp:"0-4 years (open to more)", location:"Bengaluru \u00b7 Hybrid",
    blurb:"Partner with leading clients to solve complex hiring challenges, identify outstanding talent, and create meaningful career opportunities.",
-   intro:"At Peepal, we don't just fill positions — we help organizations build exceptional teams. As part of our Delivery function, you'll partner with leading clients to solve complex hiring challenges, identify outstanding talent, and create meaningful career opportunities. This role combines relationship-building, problem-solving, and strategic hiring. You'll work closely with clients, understand their business deeply, and own hiring mandates from discovery to successful closure.",
+   intro:"At Peepal, we don\u2019t just fill positions \u2014 we help organizations build exceptional teams. As part of our Delivery function, you\u2019ll partner with leading clients to solve complex hiring challenges, identify outstanding talent, and create meaningful career opportunities. This role combines relationship-building, problem-solving, and strategic hiring. You\u2019ll work closely with clients, understand their business deeply, and own hiring mandates from discovery to successful closure.",
    responsibilities:[
      "Partner with clients to understand their hiring needs and deliver exceptional talent",
      "Own end-to-end recruitment across diverse industries, functions, and leadership levels",
@@ -534,244 +532,70 @@ const ROLES = [
      "A collaborative mindset with the willingness to learn, mentor, and grow with the team"
    ],
    questions:[
-     "Walk us through a challenging role you closed — what made it hard, and what worked in the end?",
+     "Walk us through a challenging role you closed \u2014 what made it hard, and what worked in the end?",
      "How do you build a sourcing strategy for a role where the obvious channels are dry?",
      "How do you keep a candidate engaged through a slow client-side process?"
    ]},
-
-  {id:"fo", fn:"founders-office", title:"Founder's Office", exp:"0-3 years", location:"Bengaluru · Hybrid",
-   blurb:"A high-ownership, generalist role — work closely with leadership to turn growth opportunities into reality.",
-   intro:"This is a high-ownership, generalist role where you'll work closely with leadership to identify growth opportunities and turn them into reality — from strategic exploration to execution, while driving accountability across functions.",
-   responsibilities:[
-     "Drive strategic growth initiatives and new business opportunities (0→1 and 1→10)",
-     "Conduct market research, competitor analysis, and sector mapping",
-     "Support the launch of new services and go-to-market initiatives",
-     "Translate ideas into actionable execution plans with clear owners, timelines, and success metrics",
-     "Analyze market trends and internal business data to inform strategic decisions",
-     "Lead cross-functional projects from planning through execution",
-     "Drive accountability across teams through structured reviews, tracking, and follow-through",
-     "Leverage technology and AI to improve business processes and execution"
-   ],
-   looking:[
-     "High ownership with a strong bias for execution",
-     "Ability to thrive in ambiguity and adapt quickly",
-     "Experience in market research, business strategy, or go-to-market (GTM) planning",
-     "Strong analytical, problem-solving, and stakeholder management skills",
-     "Excellent communication and project management abilities"
-   ],
-   questions:[
-     "Describe a high-ambiguity project you owned end to end. What was messy, and how did you land it?",
-     "How do you decide what NOT to do when everything feels urgent?",
-     "What would you want to learn most in a Founder's Office seat?"
-   ]},
-
-  {id:"bd-lead", fn:"business-development", title:"Lead — Business Development &amp; Client Strategy", exp:"2-5 years (open to more)", location:"Bengaluru · Hybrid",
-   blurb:"Build relationships, create opportunities, and lead from the front — shape how we grow and mentor the team.",
-   intro:"If you enjoy building relationships, creating opportunities, and leading from the front, this role is for you. You'll work closely with leadership to drive revenue, shape our business development strategy, and build long-term client partnerships. Beyond closing deals, you'll help define how we grow, mentor the team, and play a key role in scaling the function.",
-   responsibilities:[
-     "Build and grow a portfolio of high-value clients and strategic accounts",
-     "Own the business development journey from first conversation to deal closure",
-     "Build trusted relationships with senior stakeholders and long-term partners",
-     "Identify new markets, growth opportunities, and account expansion potential",
-     "Refine our GTM approach through market insights and customer feedback",
-     "Mentor team members and drive a culture of ownership and accountability",
-     "Partner with leadership to turn growth ideas into execution"
-   ],
-   looking:[
-     "A relationship-first leader with strong commercial acumen",
-     "Proven success in business development and revenue generation",
-     "High ownership with a bias for action and execution",
-     "Confidence in engaging and influencing senior stakeholders",
-     "Strategic thinking with the ability to execute consistently",
-     "Excellent communication, negotiation, and stakeholder management skills",
-     "A collaborative mindset with a passion for mentoring and building teams",
-     "Curiosity to leverage AI and modern sales practices to drive better outcomes"
-   ],
-   questions:[
-     "Describe your most complex deal — the stakeholders, the objections, the close.",
-     "How do you keep a pipeline honest instead of full of wishful-thinking deals?",
-     "What's one thing you'd change about how consulting firms typically sell?"
-   ]},
-
-  {id:"bd-assoc", fn:"business-development", title:"Business Development &amp; Client Strategy", exp:"0-2 years", location:"Bengaluru · Hybrid",
+  {id:"fo", fn:"founders-office", title:"Founder\u2019s Office", exp:"0-3 years", location:"Bengaluru \u00b7 Hybrid",
+   blurb:"A high-ownership, generalist role \u2014 work closely with leadership to turn growth opportunities into reality.",
+   intro:"This is a high-ownership, generalist role where you\u2019ll work closely with leadership to identify growth opportunities and turn them into reality \u2014 from strategic exploration to execution, while driving accountability across functions.",
+   responsibilities:["Drive strategic growth initiatives and new business opportunities (0\u21921 and 1\u219210)","Conduct market research, competitor analysis, and sector mapping","Support the launch of new services and go-to-market initiatives","Translate ideas into actionable execution plans with clear owners, timelines, and success metrics","Analyze market trends and internal business data to inform strategic decisions","Lead cross-functional projects from planning through execution","Drive accountability across teams through structured reviews, tracking, and follow-through","Leverage technology and AI to improve business processes and execution"],
+   looking:["High ownership with a strong bias for execution","Ability to thrive in ambiguity and adapt quickly","Experience in market research, business strategy, or go-to-market (GTM) planning","Strong analytical, problem-solving, and stakeholder management skills","Excellent communication and project management abilities"],
+   questions:["Describe a high-ambiguity project you owned end to end. What was messy, and how did you land it?","How do you decide what NOT to do when everything feels urgent?","What would you want to learn most in a Founder\u2019s Office seat?"]},
+  {id:"bd-lead", fn:"business-development", title:"Lead \u2014 Business Development &amp; Client Strategy", exp:"2-5 years (open to more)", location:"Bengaluru \u00b7 Hybrid",
+   blurb:"Build relationships, create opportunities, and lead from the front \u2014 shape how we grow and mentor the team.",
+   intro:"If you enjoy building relationships, creating opportunities, and leading from the front, this role is for you. You\u2019ll work closely with leadership to drive revenue, shape our business development strategy, and build long-term client partnerships. Beyond closing deals, you\u2019ll help define how we grow, mentor the team, and play a key role in scaling the function.",
+   responsibilities:["Build and grow a portfolio of high-value clients and strategic accounts","Own the business development journey from first conversation to deal closure","Build trusted relationships with senior stakeholders and long-term partners","Identify new markets, growth opportunities, and account expansion potential","Refine our GTM approach through market insights and customer feedback","Mentor team members and drive a culture of ownership and accountability","Partner with leadership to turn growth ideas into execution"],
+   looking:["A relationship-first leader with strong commercial acumen","Proven success in business development and revenue generation","High ownership with a bias for action and execution","Confidence in engaging and influencing senior stakeholders","Strategic thinking with the ability to execute consistently","Excellent communication, negotiation, and stakeholder management skills","A collaborative mindset with a passion for mentoring and building teams","Curiosity to leverage AI and modern sales practices to drive better outcomes"],
+   questions:["Describe your most complex deal \u2014 the stakeholders, the objections, the close.","How do you keep a pipeline honest instead of full of wishful-thinking deals?","What\u2019s one thing you\u2019d change about how consulting firms typically sell?"]},
+  {id:"bd-assoc", fn:"business-development", title:"Business Development &amp; Client Strategy", exp:"0-2 years", location:"Bengaluru \u00b7 Hybrid",
    blurb:"Turn conversations into long-term partnerships. Drive revenue, unlock high-potential accounts, and shape how we grow.",
-   intro:"If you love building relationships and turning conversations into long-term partnerships, this role is for you. You'll work closely with leadership to drive revenue, unlock high-potential accounts, and shape how we grow.",
-   responsibilities:[
-     "Build a strong pipeline of high-potential accounts and decision-makers",
-     "Drive outbound outreach across email, LinkedIn, calls, and referrals",
-     "Own the journey from first conversation through commercial discussions and successful handover",
-     "Build meaningful client relationships and become a trusted advisor",
-     "Understand client hiring challenges and position our solutions effectively",
-     "Unlock growth within existing accounts through strategic expansion and account mining",
-     "Experiment with new outreach strategies, messaging, and GTM approaches to improve conversion",
-     "Keep your pipeline moving through disciplined execution, CRM hygiene, and cross-functional collaboration"
-   ],
-   looking:[
-     "A natural relationship builder with excellent communication skills",
-     "Someone who enjoys engaging senior stakeholders and creating opportunities",
-     "High ownership with a strong bias for action and execution",
-     "Comfort working in a target-driven, fast-paced environment",
-     "Resilience, persistence, and the confidence to embrace rejection as part of the journey",
-     "Strong organizational skills with attention to detail",
-     "Curiosity to learn new tools, AI, and modern sales practices",
-     "A strategic mindset that helps shape how we sell, not just what we sell"
-   ],
-   questions:[
-     "Write the first two lines of a cold email to a founder who's just started hiring their first 10 people.",
-     "How would you research whether a company is a good fit for us before reaching out?",
-     "What excites you about a BD seat specifically?"
-   ]},
-
-  {id:"mkt-lead", fn:"marketing", title:"Marketing Lead", exp:"2-5 years (open to more)", location:"Bengaluru · Hybrid",
-   blurb:"Own and elevate the Peepal brand — thought leadership, employer branding, demand gen, digital.",
-   intro:"At Peepal, we believe brands are built through consistency, credibility, and meaningful stories — not just campaigns. We're looking for a Marketing Lead who will own and elevate the Peepal brand across every touchpoint. From thought leadership and employer branding to demand generation and digital presence, you'll help define how the market sees us while building marketing initiatives that create lasting business impact.",
-   responsibilities:[
-     "Shape and strengthen the Peepal brand across digital and offline channels",
-     "Lead end-to-end marketing campaigns — from idea to execution and measurement",
-     "Create compelling content, thought leadership, and employer branding initiatives",
-     "Drive demand generation through content, email, social media, events, and digital campaigns",
-     "Collaborate with leadership to bring business priorities to life through impactful storytelling",
-     "Build a strong marketing engine using data, AI, and modern marketing tools",
-     "Continuously experiment, measure, and refine what works to drive brand and business growth"
-   ],
-   looking:[
-     "A brand-first marketer who loves building stories, communities, and meaningful experiences",
-     "High ownership with a bias for execution and creativity",
-     "Strong understanding of B2B marketing, content, and digital channels",
-     "Excellent storytelling, communication, and creative thinking skills",
-     "Comfort using AI and modern marketing tools to work smarter",
-     "Curiosity, commercial thinking, and a passion for building something meaningful"
-   ],
-   questions:[
-     "How would you make a 20-year-old firm feel modern without losing its heritage?",
-     "Describe a campaign you ran end-to-end and the number that mattered most.",
-     "How do you think about employer branding vs. demand generation?"
-   ]},
-
-  {id:"mkt-exec", fn:"marketing", title:"Marketing Executive — Brand &amp; Creative", exp:"0-2 years", location:"Bengaluru · Hybrid",
-   blurb:"Storyteller and designer in one — build Peepal's digital presence and turn ideas into content people stop for.",
-   intro:"At Peepal, we believe every interaction shapes our brand. We're looking for someone who enjoys bringing ideas to life — through thoughtful content, compelling visuals, and meaningful campaigns. This is a role for someone who loves storytelling as much as design. You'll help build Peepal's digital presence, strengthen our employer and business brand, manage our social channels, and turn ideas into content that people genuinely want to engage with.",
-   responsibilities:[
-     "Build and grow Peepal's presence across LinkedIn and other digital channels",
-     "Design engaging creatives for social media, campaigns, reports, presentations, and events",
-     "Plan, execute, and manage our social media calendar and content strategy",
-     "Collaborate with leadership to translate ideas into compelling visual and written stories",
-     "Create short-form videos, reels, presentations, and marketing collateral",
-     "Support employer branding, thought leadership, and marketing campaigns",
-     "Experiment with AI tools and new content formats to improve reach and engagement",
-     "Ensure a consistent, high-quality brand experience across every touchpoint"
-   ],
-   looking:[
-     "Someone who enjoys both marketing and design, and is excited by the intersection of the two",
-     "Strong visual design skills with a good eye for branding, typography, and storytelling",
-     "Experience managing social media pages and content calendars",
-     "Comfortable creating graphics, presentations, short-form videos, and marketing assets",
-     "Proficiency with Canva, along with Adobe Creative Suite or Figma",
-     "Curiosity to explore AI-powered creative tools and modern marketing practices",
-     "High ownership, creativity, and the ability to take ideas from concept to execution",
-     "Someone who enjoys collaborating, experimenting, and continuously raising the creative bar"
-   ],
-   bonus:[
-     "Experience with employer branding or B2B marketing",
-     "Motion graphics or video editing skills",
-     "Basic understanding of websites and landing pages",
-     "A portfolio that showcases both design excellence and marketing thinking"
-   ],
-   questions:[
-     "Share a link or describe a piece of content you're proud of, and why it worked.",
-     "How would you tell the story of a company culture without using the word 'culture'?",
-     "Which brand's social presence do you admire most, and what would you steal from it?"
-   ]},
-
-  {id:"ta-internal", fn:"internal-ta", title:"Talent Acquisition Specialist — Internal Hiring", exp:"0-2 years", location:"Bengaluru · Hybrid",
+   intro:"If you love building relationships and turning conversations into long-term partnerships, this role is for you. You\u2019ll work closely with leadership to drive revenue, unlock high-potential accounts, and shape how we grow.",
+   responsibilities:["Build a strong pipeline of high-potential accounts and decision-makers","Drive outbound outreach across email, LinkedIn, calls, and referrals","Own the journey from first conversation through commercial discussions and successful handover","Build meaningful client relationships and become a trusted advisor","Understand client hiring challenges and position our solutions effectively","Unlock growth within existing accounts through strategic expansion and account mining","Experiment with new outreach strategies, messaging, and GTM approaches to improve conversion","Keep your pipeline moving through disciplined execution, CRM hygiene, and cross-functional collaboration"],
+   looking:["A natural relationship builder with excellent communication skills","Someone who enjoys engaging senior stakeholders and creating opportunities","High ownership with a strong bias for action and execution","Comfort working in a target-driven, fast-paced environment","Resilience, persistence, and the confidence to embrace rejection as part of the journey","Strong organizational skills with attention to detail","Curiosity to learn new tools, AI, and modern sales practices","A strategic mindset that helps shape how we sell, not just what we sell"],
+   questions:["Write the first two lines of a cold email to a founder who\u2019s just started hiring their first 10 people.","How would you research whether a company is a good fit for us before reaching out?","What excites you about a BD seat specifically?"]},
+  {id:"mkt-lead", fn:"marketing", title:"Marketing Lead", exp:"2-5 years (open to more)", location:"Bengaluru \u00b7 Hybrid",
+   blurb:"Own and elevate the Peepal brand \u2014 thought leadership, employer branding, demand gen, digital.",
+   intro:"At Peepal, we believe brands are built through consistency, credibility, and meaningful stories \u2014 not just campaigns. We\u2019re looking for a Marketing Lead who will own and elevate the Peepal brand across every touchpoint. From thought leadership and employer branding to demand generation and digital presence, you\u2019ll help define how the market sees us while building marketing initiatives that create lasting business impact.",
+   responsibilities:["Shape and strengthen the Peepal brand across digital and offline channels","Lead end-to-end marketing campaigns \u2014 from idea to execution and measurement","Create compelling content, thought leadership, and employer branding initiatives","Drive demand generation through content, email, social media, events, and digital campaigns","Collaborate with leadership to bring business priorities to life through impactful storytelling","Build a strong marketing engine using data, AI, and modern marketing tools","Continuously experiment, measure, and refine what works to drive brand and business growth"],
+   looking:["A brand-first marketer who loves building stories, communities, and meaningful experiences","High ownership with a bias for execution and creativity","Strong understanding of B2B marketing, content, and digital channels","Excellent storytelling, communication, and creative thinking skills","Comfort using AI and modern marketing tools to work smarter","Curiosity, commercial thinking, and a passion for building something meaningful"],
+   questions:["How would you make a 20-year-old firm feel modern without losing its heritage?","Describe a campaign you ran end-to-end and the number that mattered most.","How do you think about employer branding vs. demand generation?"]},
+  {id:"mkt-exec", fn:"marketing", title:"Marketing Executive \u2014 Brand &amp; Creative", exp:"0-2 years", location:"Bengaluru \u00b7 Hybrid",
+   blurb:"Storyteller and designer in one \u2014 build Peepal\u2019s digital presence and turn ideas into content people stop for.",
+   intro:"At Peepal, we believe every interaction shapes our brand. We\u2019re looking for someone who enjoys bringing ideas to life \u2014 through thoughtful content, compelling visuals, and meaningful campaigns. This is a role for someone who loves storytelling as much as design. You\u2019ll help build Peepal\u2019s digital presence, strengthen our employer and business brand, manage our social channels, and turn ideas into content that people genuinely want to engage with.",
+   responsibilities:["Build and grow Peepal\u2019s presence across LinkedIn and other digital channels","Design engaging creatives for social media, campaigns, reports, presentations, and events","Plan, execute, and manage our social media calendar and content strategy","Collaborate with leadership to translate ideas into compelling visual and written stories","Create short-form videos, reels, presentations, and marketing collateral","Support employer branding, thought leadership, and marketing campaigns","Experiment with AI tools and new content formats to improve reach and engagement","Ensure a consistent, high-quality brand experience across every touchpoint"],
+   looking:["Someone who enjoys both marketing and design, and is excited by the intersection of the two","Strong visual design skills with a good eye for branding, typography, and storytelling","Experience managing social media pages and content calendars","Comfortable creating graphics, presentations, short-form videos, and marketing assets","Proficiency with Canva, along with Adobe Creative Suite or Figma","Curiosity to explore AI-powered creative tools and modern marketing practices","High ownership, creativity, and the ability to take ideas from concept to execution","Someone who enjoys collaborating, experimenting, and continuously raising the creative bar"],
+   bonus:["Experience with employer branding or B2B marketing","Motion graphics or video editing skills","Basic understanding of websites and landing pages","A portfolio that showcases both design excellence and marketing thinking"],
+   questions:["Share a link or describe a piece of content you\u2019re proud of, and why it worked.","How would you tell the story of a company culture without using the word \u2018culture\u2019?","Which brand\u2019s social presence do you admire most, and what would you steal from it?"]},
+  {id:"ta-internal", fn:"internal-ta", title:"Talent Acquisition Specialist \u2014 Internal Hiring", exp:"0-2 years", location:"Bengaluru \u00b7 Hybrid",
    blurb:"Shape the people, culture, and future of Peepal. Recruitment is equal parts strategy, empathy, persistence, and storytelling.",
-   intro:"Every great company is built one great hire at a time. As part of our Talent Acquisition team, you'll help shape the people, culture, and future of Peepal. This role goes far beyond filling positions — it's about discovering exceptional talent, creating memorable candidate experiences, and helping every team find the people they'll build with. If you believe recruitment is equal parts strategy, empathy, persistence, and storytelling, you'll feel right at home here.",
-   responsibilities:[
-     "Partner with leaders across teams to hire exceptional talent",
-     "Own the end-to-end hiring journey and create an outstanding candidate experience",
-     "Build strong talent pipelines through creative sourcing and meaningful relationships",
-     "Champion and strengthen our employer brand in every candidate interaction",
-     "Experiment with new hiring ideas, sourcing strategies, and recruitment initiatives",
-     "Help build a people-first hiring culture that scales with the organization"
-   ],
-   looking:[
-     "Someone who genuinely loves connecting with people and spotting potential",
-     "Warm, empathetic, and candidate-first, with the drive to chase ambitious hiring goals",
-     "High ownership, resilience, and a bias for action",
-     "Curious, adaptable, and always looking for better ways to hire",
-     "A strong collaborator who enjoys working across teams and influencing without authority",
-     "Someone excited to shape not just who joins Peepal — but who we become as an organization"
-   ],
-   questions:[
-     "How do you keep quality high when you're under pressure to close roles fast?",
-     "Describe a time you disagreed with a hiring manager. How did it resolve?",
-     "What's one thing most companies get wrong about candidate experience?"
-   ]},
-
-  {id:"vp-cs", fn:"leadership", title:"Vice President — Contract Staffing", exp:"15+ years", location:"Bengaluru · Hybrid",
-   blurb:"Establish and scale Peepal's Contract Staffing vertical — from BD to delivery to P&amp;L ownership.",
-   intro:"We're looking for an entrepreneurial leader to establish and scale Peepal's Contract Staffing vertical — from business development and client partnerships to delivery excellence and P&L ownership. You'll work closely with leadership to shape the strategy, build the team, and create a high-performing business with long-term impact. If you enjoy building from the ground up, thrive in a commercially driven environment, and understand that sustainable growth comes from balancing revenue, execution, and margins, we'd love to meet you.",
-   responsibilities:[
-     "Build and scale the Contract Staffing business with full ownership of growth and profitability",
-     "Drive business development, strategic client acquisition, and long-term account growth",
-     "Own the complete client lifecycle — from commercial discussions to delivery excellence and renewals",
-     "Build and lead a high-performing team across business development and delivery",
-     "Design scalable processes across fulfilment, contractor management, compliance, and operations",
-     "Drive pricing, margin optimization, and P&L performance through strong commercial discipline",
-     "Partner with leadership to shape the long-term strategy and expansion of the vertical"
-   ],
-   looking:[
-     "15+ years of experience in Contract Staffing or Workforce Solutions",
-     "Proven success in building and scaling a revenue-generating business or vertical",
-     "Strong commercial acumen with deep understanding of pricing, margins, and P&L management",
-     "Established relationships across HR, Procurement, and business leadership",
-     "A builder's mindset with the ability to balance strategic thinking and hands-on execution",
-     "Strong leadership skills with experience building, mentoring, and scaling high-performing teams",
-     "Someone who thrives on ownership, accountability, and creating long-term business value"
-   ],
-   questions:[
-     "Walk us through the last vertical or business you built from the ground up.",
-     "How do you think about balancing top-line growth vs. margin discipline?",
-     "What would your first 90 days at Peepal look like?"
-   ]},
-
-  {id:"vp-es", fn:"leadership", title:"Vice President — Executive Search", exp:"10-18 years", location:"Bengaluru · Hybrid",
-   blurb:"Build a practice, shape a brand, and become a trusted advisor to some of the country's most respected leaders.",
-   intro:"Executive Search is built on trust, judgment, and relationships — and we're looking for someone who embodies all three. This is an opportunity to build a practice, shape a brand, and become a trusted advisor to some of the country's most respected leaders and organizations. You'll partner closely with leadership to win strategic mandates, advise clients on critical leadership hires, and build a practice known for its quality, credibility, and long-term relationships. Beyond delivering searches, you'll play a defining role in growing the business, mentoring the team, and strengthening Peepal's position as a trusted leadership hiring partner.",
-   responsibilities:[
-     "Build and scale Peepal's Executive Search business with full ownership of growth, client relationships, and profitability",
-     "Drive business development and originate strategic executive search mandates",
-     "Lead high-impact CXO and leadership searches with exceptional quality and client experience",
-     "Build trusted relationships with business leaders, CHROs, founders, and executive stakeholders",
-     "Hire, mentor, and grow a high-performing Executive Search team",
-     "Design scalable processes, delivery frameworks, and market positioning for the practice",
-     "Partner with leadership to shape the long-term strategy and growth of the vertical"
-   ],
-   looking:[
-     "10–18 years of experience in Executive Search or leadership hiring",
-     "Proven success in building client relationships and originating executive search mandates",
-     "Strong commercial acumen with experience owning revenue, profitability, or a business portfolio",
-     "Executive presence with the ability to engage and influence C-suite stakeholders",
-     "A builder's mindset with the ability to balance strategic thinking and hands-on execution",
-     "Experience leading, mentoring, and scaling high-performing teams",
-     "Someone who thrives on ownership, long-term relationships, and creating enduring business value"
-   ],
-   questions:[
-     "Describe the most complex CXO mandate you've delivered — the search, the shortlist, the close.",
-     "How do you originate mandates without leaning on transactional pitching?",
-     "How would you position Peepal's Executive Search practice differently in the market?"
-   ]},
+   intro:"Every great company is built one great hire at a time. As part of our Talent Acquisition team, you\u2019ll help shape the people, culture, and future of Peepal. This role goes far beyond filling positions \u2014 it\u2019s about discovering exceptional talent, creating memorable candidate experiences, and helping every team find the people they\u2019ll build with. If you believe recruitment is equal parts strategy, empathy, persistence, and storytelling, you\u2019ll feel right at home here.",
+   responsibilities:["Partner with leaders across teams to hire exceptional talent","Own the end-to-end hiring journey and create an outstanding candidate experience","Build strong talent pipelines through creative sourcing and meaningful relationships","Champion and strengthen our employer brand in every candidate interaction","Experiment with new hiring ideas, sourcing strategies, and recruitment initiatives","Help build a people-first hiring culture that scales with the organization"],
+   looking:["Someone who genuinely loves connecting with people and spotting potential","Warm, empathetic, and candidate-first, with the drive to chase ambitious hiring goals","High ownership, resilience, and a bias for action","Curious, adaptable, and always looking for better ways to hire","A strong collaborator who enjoys working across teams and influencing without authority","Someone excited to shape not just who joins Peepal \u2014 but who we become as an organization"],
+   questions:["How do you keep quality high when you\u2019re under pressure to close roles fast?","Describe a time you disagreed with a hiring manager. How did it resolve?","What\u2019s one thing most companies get wrong about candidate experience?"]},
+  {id:"vp-cs", fn:"leadership", title:"Vice President \u2014 Contract Staffing", exp:"15+ years", location:"Bengaluru \u00b7 Hybrid",
+   blurb:"Establish and scale Peepal\u2019s Contract Staffing vertical \u2014 from BD to delivery to P&amp;L ownership.",
+   intro:"We\u2019re looking for an entrepreneurial leader to establish and scale Peepal\u2019s Contract Staffing vertical \u2014 from business development and client partnerships to delivery excellence and P&L ownership. You\u2019ll work closely with leadership to shape the strategy, build the team, and create a high-performing business with long-term impact. If you enjoy building from the ground up, thrive in a commercially driven environment, and understand that sustainable growth comes from balancing revenue, execution, and margins, we\u2019d love to meet you.",
+   responsibilities:["Build and scale the Contract Staffing business with full ownership of growth and profitability","Drive business development, strategic client acquisition, and long-term account growth","Own the complete client lifecycle \u2014 from commercial discussions to delivery excellence and renewals","Build and lead a high-performing team across business development and delivery","Design scalable processes across fulfilment, contractor management, compliance, and operations","Drive pricing, margin optimization, and P&L performance through strong commercial discipline","Partner with leadership to shape the long-term strategy and expansion of the vertical"],
+   looking:["15+ years of experience in Contract Staffing or Workforce Solutions","Proven success in building and scaling a revenue-generating business or vertical","Strong commercial acumen with deep understanding of pricing, margins, and P&L management","Established relationships across HR, Procurement, and business leadership","A builder\u2019s mindset with the ability to balance strategic thinking and hands-on execution","Strong leadership skills with experience building, mentoring, and scaling high-performing teams","Someone who thrives on ownership, accountability, and creating long-term business value"],
+   questions:["Walk us through the last vertical or business you built from the ground up.","How do you think about balancing top-line growth vs. margin discipline?","What would your first 90 days at Peepal look like?"]},
+  {id:"vp-es", fn:"leadership", title:"Vice President \u2014 Executive Search", exp:"10-18 years", location:"Bengaluru \u00b7 Hybrid",
+   blurb:"Build a practice, shape a brand, and become a trusted advisor to some of the country\u2019s most respected leaders.",
+   intro:"Executive Search is built on trust, judgment, and relationships \u2014 and we\u2019re looking for someone who embodies all three. This is an opportunity to build a practice, shape a brand, and become a trusted advisor to some of the country\u2019s most respected leaders and organizations. You\u2019ll partner closely with leadership to win strategic mandates, advise clients on critical leadership hires, and build a practice known for its quality, credibility, and long-term relationships. Beyond delivering searches, you\u2019ll play a defining role in growing the business, mentoring the team, and strengthening Peepal\u2019s position as a trusted leadership hiring partner.",
+   responsibilities:["Build and scale Peepal\u2019s Executive Search business with full ownership of growth, client relationships, and profitability","Drive business development and originate strategic executive search mandates","Lead high-impact CXO and leadership searches with exceptional quality and client experience","Build trusted relationships with business leaders, CHROs, founders, and executive stakeholders","Hire, mentor, and grow a high-performing Executive Search team","Design scalable processes, delivery frameworks, and market positioning for the practice","Partner with leadership to shape the long-term strategy and growth of the vertical"],
+   looking:["10\u201318 years of experience in Executive Search or leadership hiring","Proven success in building client relationships and originating executive search mandates","Strong commercial acumen with experience owning revenue, profitability, or a business portfolio","Executive presence with the ability to engage and influence C-suite stakeholders","A builder\u2019s mindset with the ability to balance strategic thinking and hands-on execution","Experience leading, mentoring, and scaling high-performing teams","Someone who thrives on ownership, long-term relationships, and creating enduring business value"],
+   questions:["Describe the most complex CXO mandate you\u2019ve delivered \u2014 the search, the shortlist, the close.","How do you originate mandates without leaning on transactional pitching?","How would you position Peepal\u2019s Executive Search practice differently in the market?"]},
 ];
 
 const FUNCTIONS = [
-  {id:"client-delivery",     label:"Client Delivery — Talent Acquisition", primary:true,
+  {id:"client-delivery",     label:"Client Delivery \u2014 Talent Acquisition", primary:true,
    note:"Our core craft. Partnering with leading clients to solve their hardest hiring problems."},
-  {id:"founders-office",     label:"Founder's Office",
+  {id:"founders-office",     label:"Founder\u2019s Office",
    note:"High-ownership, generalist. Work directly with leadership on the biggest bets."},
   {id:"business-development",label:"Business Development &amp; Client Strategy",
    note:"Build relationships, unlock accounts, and shape how Peepal grows."},
   {id:"marketing",           label:"Marketing",
-   note:"Brand, story, and demand — how the market comes to see us."},
+   note:"Brand, story, and demand \u2014 how the market comes to see us."},
   {id:"internal-ta",         label:"Internal Talent Acquisition",
    note:"Help shape who joins Peepal and who we become."},
   {id:"leadership",          label:"Leadership Roles",
@@ -831,7 +655,7 @@ function renderRoles(){
     return `
       <div class="fn-block ${fn.primary?"primary":""}">
         <div class="fn-head">
-          <h3>${fn.primary?'<span class="pri">Our craft — the core team</span>':''}${fn.label}</h3>
+          <h3>${fn.primary?'<span class="pri">Our craft \u2014 the core team</span>':''}${fn.label}</h3>
           <div class="meta">${fn.note}</div>
         </div>
         <div class="role-grid">
@@ -845,7 +669,7 @@ function renderRoles(){
                 </div>
                 <div class="blurb">${r.blurb}</div>
               </div>
-              <div class="go">View &amp; apply <span class="arr">→</span></div>
+              <div class="go">View &amp; apply <span class="arr">\u2192</span></div>
             </div>`).join("")}
         </div>
       </div>`;
@@ -868,7 +692,7 @@ function openRole(id){
           <span>Full-time</span>
         </div>
       </div>
-      <button class="x" onclick="closeOverlay()" aria-label="Close">✕</button>
+      <button class="x" onclick="closeOverlay()" aria-label="Close">\u2715</button>
     </div>
     <div class="sheet-body">
       <div class="block"><p>${r.intro}</p></div>
@@ -883,7 +707,7 @@ function openRole(id){
     </div>
     <div class="sheet-foot">
       <button class="btn ghost" onclick="closeOverlay()">Back</button>
-      <button class="btn primary" onclick="openApply('${r.id}')">Apply for this role <span class="arr">→</span></button>
+      <button class="btn primary" onclick="openApply('${r.id}')">Apply for this role <span class="arr">\u2192</span></button>
     </div>`;
   openOverlay();
 }
@@ -900,21 +724,21 @@ function openApply(id){
           <span>${esc(r.location)}</span>
         </div>
       </div>
-      <button class="x" onclick="closeOverlay()" aria-label="Close">✕</button>
+      <button class="x" onclick="closeOverlay()" aria-label="Close">\u2715</button>
     </div>
     <div class="sheet-body">
       <div class="two">
         <div class="field"><label>Full name <span class="req">*</span></label><input id="f-name" placeholder="Your name"></div>
-        <div class="field"><label>Phone <span class="req">*</span></label><input id="f-phone" placeholder="+91…"></div>
+        <div class="field"><label>Phone <span class="req">*</span></label><input id="f-phone" placeholder="+91\u2026"></div>
       </div>
       <div class="field"><label>Email <span class="req">*</span></label><input id="f-email" type="email" placeholder="you@email.com"></div>
       <div class="two">
         <div class="field"><label>Experience level <span class="req">*</span></label>
           <select id="f-level">${LEVELS.map(l=>`<option>${l}</option>`).join("")}</select>
         </div>
-        <div class="field"><label>Expected compensation <span class="req">*</span></label><input id="f-exp" placeholder="e.g. ₹18 LPA"></div>
+        <div class="field"><label>Expected compensation <span class="req">*</span></label><input id="f-exp" placeholder="e.g. \u20B918 LPA"></div>
       </div>
-      <div class="field"><label>Current compensation</label><input id="f-cur" placeholder="e.g. ₹12 LPA (optional)"></div>
+      <div class="field"><label>Current compensation</label><input id="f-cur" placeholder="e.g. \u20B912 LPA (optional)"></div>
       <div class="field"><label>Resume (PDF, DOC, DOCX)</label><input id="f-resume" type="file" accept=".pdf,.doc,.docx"></div>
       <div style="border-top:1px solid var(--line);padding-top:18px;margin-bottom:14px">
         <h4 style="font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);margin-bottom:2px">A few questions</h4>
@@ -926,11 +750,14 @@ function openApply(id){
     </div>
     <div class="sheet-foot">
       <button class="btn ghost" onclick="openRole('${r.id}')">Back</button>
-      <button class="btn primary" id="submit-btn" onclick="submitApp('${r.id}')">Submit application <span class="arr">→</span></button>
+      <button class="btn primary" id="submit-btn" onclick="submitApp('${r.id}')">Submit application <span class="arr">\u2192</span></button>
     </div>`;
   openOverlay();
 }
 
+/* ============================================================
+   FIX 2: Added redirect:'follow' to handle Apps Script 302
+   ============================================================ */
 async function submitApp(id){
   const r = roleById(id);
   const val = s => ($("#"+s)?.value||"").trim();
@@ -945,13 +772,13 @@ async function submitApp(id){
     err.style.display="block"; return;
   }
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-    err.textContent="That email doesn't look right — please check it.";
+    err.textContent="That email doesn\u2019t look right \u2014 please check it.";
     err.style.display="block"; return;
   }
 
   const btn = $("#submit-btn");
   btn.disabled = true;
-  btn.innerHTML = "Submitting…";
+  btn.innerHTML = "Submitting\u2026";
 
   const payload = {
     action:"apply", role: r.title,
@@ -970,7 +797,11 @@ async function submitApp(id){
     }
 
     if (WEB_APP_URL) {
-      const res = await fetch(WEB_APP_URL, { method:"POST", body: JSON.stringify(payload) });
+      const res = await fetch(WEB_APP_URL, {
+        method: "POST",
+        redirect: "follow",
+        body: JSON.stringify(payload)
+      });
       const data = await res.json();
       if (!data.ok) throw new Error(data.error || "Submit failed");
     } else {
@@ -979,10 +810,10 @@ async function submitApp(id){
 
     showConfirm(name, r.title);
   } catch (e) {
-    err.textContent = "Couldn't submit — please try again. If this keeps happening, email us at careers@peepalconsulting.com.";
+    err.textContent = "Couldn\u2019t submit \u2014 please try again. If this keeps happening, email us at careers@peepalconsulting.com.";
     err.style.display = "block";
     btn.disabled = false;
-    btn.innerHTML = 'Submit application <span class="arr">→</span>';
+    btn.innerHTML = 'Submit application <span class="arr">\u2192</span>';
   }
 }
 
@@ -999,9 +830,9 @@ function showConfirm(name, roleTitle){
   const first = (name||"there").split(" ")[0];
   $("#sheet").innerHTML = `
     <div class="sheet-body confirm">
-      <div class="big">✓</div>
+      <div class="big">\u2713</div>
       <h3>Application received</h3>
-      <p>Thanks ${esc(first)} — your application for <b>${roleTitle}</b> is in. Our team reviews every application and we'll be in touch by email.</p>
+      <p>Thanks ${esc(first)} \u2014 your application for <b>${roleTitle}</b> is in. Our team reviews every application and we\u2019ll be in touch by email.</p>
       <div style="margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <button class="btn ghost" onclick="closeOverlay()">Back to roles</button>
       </div>
