@@ -93,7 +93,6 @@
   .team-tag{position:absolute;right:24px;top:22px;background:var(--orange);color:#fff;font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px}
   .team-fallback{background:linear-gradient(135deg,#2d4a3a 0%,#3a6a54 100%);display:grid;place-items:center;color:#fff;height:clamp(320px,44vh,460px);font-family:var(--serif);font-style:italic;font-size:22px;text-align:center;padding:24px}
 
-  /* ROLES + FILTERS */
   .roles{border-top:1px solid var(--line)}
   .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
   .filters button{padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;color:var(--ink-2);background:var(--card);border:1px solid var(--line);transition:.15s}
@@ -256,9 +255,8 @@
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeOverlay()"><div class="sheet" id="sheet"></div></div>
 
 <script>
-const WEB_APP_URL='https://script.google.com/macros/s/AKfycbyCG6lPG9W0Hd9g93lUSZXuXC_qTT773buglZlLYShXfAG9S8XT4EncCMuMgxWwRuRy0w/exec';
+const WEB_APP_URL='https://script.google.com/macros/s/AKfycbzlLPSXF4GG8jizvI5S7NRZukoKO2zX49i_z0w8mnxf2t4ToE25DvOfZkzAmr2UePiZ6w/exec';
 
-/* ---- Team photo: try multiple filenames (GitHub Pages is case-sensitive) ---- */
 (function(){
   const img=document.getElementById('team-photo');
   const fb=document.getElementById('team-fallback');
@@ -305,7 +303,6 @@ const BENEFITS=[
 ];
 
 const ROLES=[
-  /* TALENT ACQUISITION */
   {id:"ta-client",fn:"talent-acquisition",title:"Talent Acquisition Specialist",exp:"0\u20134 years (open to more)",location:"Bengaluru",
    levels:["0\u20132 years","2\u20135 years","5+ years"],
    blurb:"Partner with leading clients to solve complex hiring challenges, identify outstanding talent, and create meaningful career opportunities.",
@@ -338,7 +335,6 @@ const ROLES=[
    looking:["10\u201318 years of experience in Executive Search or leadership hiring","Proven success in building client relationships and originating executive search mandates","Strong commercial acumen with experience owning revenue, profitability, or a business portfolio","Executive presence with the ability to engage and influence C-suite stakeholders","A builder\u2019s mindset with the ability to balance strategic thinking and hands-on execution","Experience leading, mentoring, and scaling high-performing teams","Someone who thrives on ownership, long-term relationships, and creating enduring business value"],
    questions:[]},
 
-  /* FOUNDER'S OFFICE */
   {id:"fo",fn:"founders-office",title:"Founder\u2019s Office",exp:"0\u20133 years",location:"Bengaluru",
    levels:["0\u20132 years","2\u20134 years","4+ years"],
    blurb:"A high-ownership, generalist role \u2014 work closely with leadership to turn growth opportunities into reality.",
@@ -347,7 +343,6 @@ const ROLES=[
    looking:["High ownership with a strong bias for execution","Ability to thrive in ambiguity and adapt quickly","Experience in market research, business strategy, or go-to-market (GTM) planning","Strong analytical, problem-solving, and stakeholder management skills","Excellent communication and project management abilities"],
    questions:["Describe a high-ambiguity project you owned end to end. What was messy, and how did you land it?","How do you decide what NOT to do when everything feels urgent?","What would you want to learn most in a Founder\u2019s Office seat?"]},
 
-  /* BUSINESS DEVELOPMENT */
   {id:"bd-lead",fn:"business-development",title:"Lead \u2014 Business Development & Client Strategy",exp:"2\u20135 years (open to more)",location:"Bengaluru",
    levels:["2\u20134 years","4\u20136 years","6+ years"],
    blurb:"Build relationships, create opportunities, and lead from the front \u2014 shape how we grow and mentor the team.",
@@ -364,7 +359,6 @@ const ROLES=[
    looking:["A natural relationship builder with excellent communication skills","Someone who enjoys engaging senior stakeholders and creating opportunities","High ownership with a strong bias for action and execution","Comfort working in a target-driven, fast-paced environment","Resilience, persistence, and the confidence to embrace rejection as part of the journey","Strong organizational skills with attention to detail","Curiosity to learn new tools, AI, and modern sales practices","A strategic mindset that helps shape how we sell, not just what we sell"],
    questions:["If there were no constraints, what career would you choose for yourself today, and why? Please elaborate.","In your view, why is Business Development important beyond driving revenue?","What excites you about a Business Development role specifically?"]},
 
-  /* MARKETING */
   {id:"mkt-lead",fn:"marketing",title:"Marketing Lead \u2014 Brand & Creative",exp:"2\u20135 years (open to more)",location:"Bengaluru",
    levels:["2\u20133 years","3\u20135 years","5+ years"],
    blurb:"Own and elevate the Peepal brand \u2014 thought leadership, employer branding, demand gen, digital.",
@@ -398,10 +392,8 @@ let activeFilter='all';
 function renderClients(){
   $("#clients-mount").innerHTML=CLIENTS.map(c=>`<div class="client"><img src="${c.file}" alt="${esc(c.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="text-fallback" style="display:none">${c.name}</div></div>`).join("");
 }
-
 function boxHTML(item){return `<div class="box"><div class="k">${item.k}</div><h4>${item.t}</h4><p>${item.d}</p></div>`;}
 function numBoxHTML(item){return `<div class="num-box"><div class="n">${item.n}<small>${item.suf}</small></div><div class="l">${item.l}${item.sub?`<small>${item.sub}</small>`:""}</div></div>`;}
-
 function renderBoxed(gridSel,carouselSel,dotsSel,data,htmlFn){
   const grid=$(gridSel),car=$(carouselSel),dots=$(dotsSel);
   const html=data.map(htmlFn).join("");
@@ -421,7 +413,6 @@ function renderFilters(){
   DEPARTMENTS.forEach(d=>{html+=`<button onclick="setFilter('${d.id}')">${d.label} (${counts[d.id]})</button>`;});
   $("#filters-mount").innerHTML=html;
 }
-
 function setFilter(f){
   activeFilter=f;
   document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
@@ -430,7 +421,6 @@ function setFilter(f){
   else{DEPARTMENTS.forEach((d,i)=>{if(d.id===f)btns[i+1].classList.add("active");});}
   renderRoles();
 }
-
 function renderRoles(){
   const depts=activeFilter==='all'?DEPARTMENTS:DEPARTMENTS.filter(d=>d.id===activeFilter);
   $("#roles-mount").innerHTML=depts.map(dept=>{
@@ -460,7 +450,6 @@ function openRole(id){
 
 function openApply(id){
   const r=roleById(id);const hasQ=r.questions&&r.questions.length>0;
-  const noticePeriodOpts=["Immediately available","15 days","30 days","60 days","90 days","More than 90 days"];
   $("#sheet").innerHTML=`
     <div class="sheet-head"><div><span class="tag">Apply</span><h3>${r.title}</h3>
       <div class="rmeta"><span>${esc(r.exp)}</span><span>${esc(r.location)}</span></div>
@@ -476,14 +465,18 @@ function openApply(id){
           <select id="f-level">${r.levels.map(l=>`<option>${l}</option>`).join("")}</select>
         </div>
         <div class="field"><label>Notice period <span class="req">*</span></label>
-          <select id="f-notice">${noticePeriodOpts.map(o=>`<option>${o}</option>`).join("")}</select>
+          <select id="f-notice"><option value="">Select</option><option>Immediate</option><option>15 days</option><option>30 days</option><option>60 days</option><option>90 days</option><option>More than 90 days</option></select>
         </div>
       </div>
       <div class="two">
         <div class="field"><label>Current compensation <span class="req">*</span></label><input id="f-cur" placeholder="Current compensation"></div>
         <div class="field"><label>Expected compensation <span class="req">*</span></label><input id="f-exp" placeholder="Expected compensation"></div>
       </div>
-      <div class="field"><label>Resume (PDF, DOC, DOCX) <span class="req">*</span></label><input id="f-resume" type="file" accept=".pdf,.doc,.docx"></div>
+      <div class="field"><label>Resume (PDF, DOC, DOCX) <span class="req">*</span></label><input id="f-resume" type="file" accept=".pdf,.doc,.docx" required></div>
+      <!-- Honeypot: invisible to humans, bots auto-fill it -->
+      <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;height:0;overflow:hidden" aria-hidden="true">
+        <input id="f-website" tabindex="-1" autocomplete="off" placeholder="Website">
+      </div>
       ${hasQ?`<div style="border-top:1px solid var(--line);padding-top:18px;margin-bottom:14px">
         <h4 style="font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);margin-bottom:2px">A few questions</h4>
         <div style="color:var(--ink-2);font-size:13px">Helps us get to know you beyond the resume.</div>
@@ -503,27 +496,40 @@ async function submitApp(id){
   const hasQ=r.questions&&r.questions.length>0;
   const answers=hasQ?r.questions.map((_,i)=>val("f-q"+i)):[];
   const err=$("#form-err");err.style.display="none";
-
   const fileEl=$("#f-resume");
-  const hasFile=fileEl&&fileEl.files&&fileEl.files.length>0;
-  const missing=!name||!phone||!email||!expc||!curc||!hasFile||(hasQ&&answers.some(a=>!a));
-  if(missing){err.textContent="Please fill in all required fields (marked *), including your resume.";err.style.display="block";return;}
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){err.textContent="That email doesn\u2019t look right \u2014 please check it.";err.style.display="block";return;}
+  const hasResume=fileEl&&fileEl.files&&fileEl.files.length>0;
+
+  if(!name||!phone||!email||!expc||!curc||!notice||!hasResume||(hasQ&&answers.some(a=>!a))){
+    err.textContent="Please fill in all required fields (marked *), including your resume.";
+    err.style.display="block";return;
+  }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+    err.textContent="That email doesn\u2019t look right \u2014 please check it.";
+    err.style.display="block";return;
+  }
 
   const btn=$("#submit-btn");btn.disabled=true;btn.innerHTML="Submitting\u2026";
-  const payload={action:"apply",role:r.title,name,email,phone,level,noticePeriod:notice,
-    currentComp:curc,expectedComp:expc,q1:answers[0]||"",q2:answers[1]||"",q3:answers[2]||""};
+
+  const payload={action:"apply",role:r.title,name,email,phone,level,
+    noticePeriod:notice,currentComp:curc,expectedComp:expc,
+    q1:answers[0]||"",q2:answers[1]||"",q3:answers[2]||"",
+    website:val("f-website")};
 
   try{
-    if(hasFile){const f=fileEl.files[0];payload.resumeBase64=await fileToBase64(f);payload.resumeName=f.name;payload.resumeType=f.type;}
+    if(hasResume){
+      const f=fileEl.files[0];
+      payload.resumeBase64=await fileToBase64(f);
+      payload.resumeName=f.name;
+      payload.resumeType=f.type;
+    }
     if(WEB_APP_URL){
-      const res=await fetch(WEB_APP_URL,{method:"POST",redirect:"follow",body:JSON.stringify(payload)});
-      const data=await res.json();if(!data.ok)throw new Error(data.error||"Submit failed");
-    }else{await new Promise(r=>setTimeout(r,600));}
+      await fetch(WEB_APP_URL,{method:"POST",mode:"no-cors",body:JSON.stringify(payload)});
+    }
     showConfirm(name,r.title);
   }catch(e){
     err.textContent="Couldn\u2019t submit \u2014 please try again. If this keeps happening, email us at careers@peepalconsulting.com.";
-    err.style.display="block";btn.disabled=false;btn.innerHTML='Submit application <span class="arr">\u2192</span>';
+    err.style.display="block";btn.disabled=false;
+    btn.innerHTML='Submit application <span class="arr">\u2192</span>';
   }
 }
 
